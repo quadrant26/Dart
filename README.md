@@ -203,3 +203,149 @@ Study Dart
         闭包是一个方法(对象)
         闭包定义在其他方法内部
         闭包能够访问外部方法的局部变量，并持有其状态
+
+6. 面向对象
+
+    a. 类与对象
+        
+        class Person{}
+        属性默认会生成 getter 和 setter 方法
+        使用 final 声明的属性只有 getter 方法
+        属性和方法通过 . 访问
+        方法不能重载
+
+    b. 计算属性
+
+        通过计算而来，不存储值
+
+    c. 构造方法
+
+        没有自定义构造方法， 则有一个默认的构造方法
+
+        /*
+        Person(String name, int age){
+            this.name = name;
+            this.age = age;
+        }*/
+        Person(this.name, this.age){
+            print(name);
+        }
+
+    d. 常量构造方法
+
+        如果类是不可变状态，可以把对象定义为编译时常量
+        使用const 声明构造方法，并且所有变量都为 final
+        使用 const 声明对象，可以省略
+
+    e. 工厂构造方法
+
+        类似于设计模式中的工厂模式
+        在构造方法钱加关键字 factory
+        可以返回对象
+
+    f. 初始化列表
+
+        初始化列表回在构造方法体执行之前执行
+        使用逗号分隔初始化表达式
+        初始化列表常用于设置 final 变量的值
+
+        Person.withMap(Map map): gender = map['gender']{
+            this.name = map['name'];
+            this.age = map['age'];
+        }
+
+    g. 静态成员
+
+        使用 static 关键字来实现类级别的变量和函数
+        静态成员不能发文非静态成员，非静态成员可以访问静态成员
+        类中的常量需要使用 static const 声明
+
+        static const int maxPage = 10;
+        static int currentPage = 1;
+        // 下滑
+        static void scrollDown(){
+            currentPage = 1;
+            print("ScrollDown...");
+        }
+        
+    h. 对象操作符
+
+        条件成员访问 ?.
+        类型转换 as
+        是否指定类型 is, is!
+        级联操作 ..
+        var person4 = new Person();
+        person4..name = 'Tom'
+               ..age = 30
+               ..work();
+
+    j. 对象call方法
+
+        如果类实现了 call() 方法， 则该类的对象可以作为方法使用
+
+    k. 继承
+
+        extends 继承一个类
+        子类会继承父类的可见的属性和方法，不会继承构造方法
+        子类能够复写父类的方法，getter和setter
+        单继承，多态性
+        
+    l. 继承中的构造方法
+
+        子类的构造方法默认会调用父类的无名无参构造方法
+        如果父类没有无名无参构造方法，则需要显示调用父类构造方法
+        在构造方法参数后使用：显示调用父类构造方法
+
+        执行顺序
+            父类的构造方法在子类构造方法体开始执行的位置调用
+            如果有初始化列表，初始化列表会在父类构造方法之前执行
+
+
+    m. 抽象类
+
+        使用 abstract 表示， 不能被实例化
+        抽象方法不用 abstract 修饰， 无实现
+        抽象类可以没有抽象方法
+        抽象方法的类一定得声明为抽象类
+
+    n. 接口
+
+        类就是接口
+        每个类都隐式的定义了一个包含所有实例成员的接口
+        class Student implements Person{
+
+        }
+        如果是复用已有类的实现，使用继承(extends)
+        如果只是使用已有类的外在行为，使用接口（implements）
+
+    o. Mixins
+
+        Mixins 类似于多继承，是在多继承中重用一个类代码的方式
+        class D extends A with B, C{
+
+        }
+        作为 Mixin 的类不能有显示声明的构造方法
+        作为 Mixin 的类只能继承自 Object
+        使用关键字 with 连接一个活多个 mixin
+
+    p. 操作符覆写
+
+        覆写操作符需要在类中定义
+
+        返回类型 operator 操作符 (参数1, 参数2, ...){
+            实现体...
+            return 返回值
+        }
+
+        如果 覆写 ==, 还需要覆写对象的 hashCode getter 方法
+
+        可覆写的操作符
+
+        < + | [] > / ^ []= <= ~/ & ~ >= * << == - % >> 
+    
+7. 枚举&泛型
+
+    a. 枚举
+
+    b. 泛型
+
