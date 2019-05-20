@@ -1,0 +1,25 @@
+void main () {
+  var student = new Student(); 
+  student.run();
+}
+
+// abstract class Person {
+//   String name;
+//   int get age => 18;
+
+//   void run (){
+//     print("Person run ...");
+//   }
+// }
+
+abstract class Person {
+  void run ();
+}
+
+class Student implements Person{
+  @override
+  void run() {
+    // TODO: implement run
+  }
+  
+}
